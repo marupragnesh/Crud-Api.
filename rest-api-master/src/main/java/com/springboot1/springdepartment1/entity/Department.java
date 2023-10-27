@@ -13,7 +13,7 @@ import org.hibernate.annotations.ValueGenerationType;
 @NoArgsConstructor
 @Getter
 @Setter
-@Entity
+@Entity(name="department")
 public class Department {
 
     @Id
