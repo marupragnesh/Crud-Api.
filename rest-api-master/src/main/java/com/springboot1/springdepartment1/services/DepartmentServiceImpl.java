@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class DepartmentServiceImpl implements DepartmentService {
 
     @Autowired
@@ -28,15 +29,12 @@ public class DepartmentServiceImpl implements DepartmentService {
 
     @Override
     public Department getdataone(long department_id) throws DepartmentNotFoundException {
-//        return departmentRepository.findById(department_id).get();
       Optional <Department> department = departmentRepository.findById(department_id);
-                if(!department.isPresent())
-
-                {
-                    throw  new DepartmentNotFoundException("Department is not exist");
-
-                }else
-                    return department.get();
+      if(!department.isPresent()){
+        throw  new DepartmentNotFoundException("Department is not exist");
+        }else{
+            return department.get();
+        }
     }
 
     @Override
